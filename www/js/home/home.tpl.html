@@ -1,0 +1,26 @@
+<ion-view view-title="Home">
+  <ion-content>
+    <ion-header-bar class="bar-stable">
+        <h1 class="title">{{vm.title}}</h1>
+    </ion-header-bar>
+    <div class="row region">
+      <div class="col">
+        <img ng-src="{{vm.lastPhoto}}" style="max-width: 100%">
+      </div>
+    </div>
+    <button ng-click="getPhoto()" class="btn-photo button button-block button-royal">
+      <span ng-if="!lastPhoto">自拍一张</span>
+      <span ng-if="lastPhoto">重拍一张</span>
+    </button>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="friend in vm.friendList" type="item-text-wrap">
+        <a href="#/fight/anonymous" ng-if="$first">
+          <img ng-src="{{friend.face}}">
+        </a>
+        <a href="#/fight/friend" ng-if="!$first">
+          <img ng-src="{{friend.face}}">
+        </a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
