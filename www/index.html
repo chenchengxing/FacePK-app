@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/jr-crop/jr-crop.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/jr-crop/jr-crop.js"></script>
+
+    <!-- ng cordova js -->
+    <script src="lib/ng-cordova.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+  </head>
+
+  <body class="platform-ios platform-cordova platform-webview" ng-app="app" ng-controller="AppCtrl">
+    <ion-pane>
+        <!-- <ion-header-bar class="bar-stable">
+            <h1 class="title">good looking face</h1>
+        </ion-header-bar> -->
+
+        <!-- <ion-content padding="true" has-header="false">
+            <div class="row region">
+              <div class="col">
+                <img ng-src="{{lastPhoto}}" style="max-width: 100%">
+              </div>
+            </div>
+            <button ng-click="getPhoto()" class="btn-photo button button-block button-royal">
+                <span ng-if="!lastPhoto">自拍一张</span>
+                <span ng-if="lastPhoto">重拍一张</span>
+            </button>
+            <div class="row region">
+              <ion-slide-box on-slide-changed="slideHasChanged($index)">
+                  <ion-slide>
+                    <div class="row avatars">
+                      <div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="avatar">
+                            <img ng-src="https://avatars3.githubusercontent.com/u/11214?v=3&amp;s=460">
+                        </div>
+                      </div><div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div><div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row avatars">
+                      <div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div><div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div><div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row avatars">
+                      <div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div><div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div><div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="avatar">
+                            <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+                        </div>
+                      </div>
+                    </div>
+                  </ion-slide>
+                  <ion-slide>
+                    <div class="box yellow"><h1>YELLOW</h1></div>
+                  </ion-slide>
+                  <ion-slide>
+                    <div class="box pink"><h1>PINK</h1></div>
+                  </ion-slide>
+                </ion-slide-box>
+            </div>
+        </ion-content> -->
+        
+        <ion-content padding="true" has-header="true">
+            <button ng-click="getPhoto()" class="button button-block button-primary">Take Photo</button>
+            <img ng-src="{{lastPhoto}}" style="max-width: 100%">
+            <div class="text-center padding">
+                <button ng-disabled="registerDisabled" class="button button-bar-inline button-balanced" ng-click="register()">Register</button>
+                <button ng-disabled="!registerDisabled" class="button button-bar-inline button-balanced" ng-click="unregister()">Unregister</button>
+            </div>
+            <p>Device Token</p>
+            <textarea readonly>{{regId}}</textarea>
+            <ion-list>
+                <ion-item ng-repeat="log in logs track by $index" type="item-content">
+                    {{log}}
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <ion-item ng-repeat="notification in notifications track by $index" type="item-content">
+                    {{notification}}
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-pane>
+
+  </body>
+</html>
