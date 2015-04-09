@@ -12,7 +12,7 @@ app.controller('AppCtrl', function($scope, $cordovaPush, $cordovaDialogs, $cordo
   $scope.alienImg = "";
   // call to register automatically upon device ready
   ionPlatform.ready.then(function(device) {
-    $scope.register();
+    // $scope.register();
   });
 
 

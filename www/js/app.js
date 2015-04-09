@@ -9,12 +9,18 @@ var app = angular.module('app', ['ionic','ngCordova', 'jrCrop'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/home');
+  $urlRouterProvider.otherwise('/login');
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
+
+  .state('login', {
+    url: '/login',
+    templateUrl: 'js/login/login.tpl.html',
+    controller: 'LoginController as vm'
+  })
 
   // setup an abstract state for the tabs directive
     .state('home', {
@@ -49,4 +55,16 @@ var app = angular.module('app', ['ionic','ngCordova', 'jrCrop'])
   })
 });
 
-app.constant('APP_CONTEXT', 'http://127.0.0.1/');
+app.config([ '$httpProvider', function($httpProvider) {
+
+      //GET header config
+      $httpProvider.defaults.headers.get = $httpProvider.defaults.headers.get || {};
+      // $httpProvider.defaults.headers.get['X-Requested-With'] = 'XMLHttpRequest';
+      // $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+
+      //POST header config
+      $httpProvider.defaults.headers.post = {
+          'Content-Type' : 'application/json; charset=UTF-8'};
+    }
+  ]);
+

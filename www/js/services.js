@@ -18,3 +18,17 @@ app.factory(("ionPlatform"), function( $q ){
         ready: ready.promise
     }
 })
+
+.factory('ajax', function ($http, APP_CONTEXT) {
+  var service = {
+    addUser: addUser,
+    getUserInfo: getUserInfo
+  };
+  return service;
+  function addUser (data) {
+    return $http.post(APP_CONTEXT + 'users/addUser', data);
+  }
+  function getUserInfo (username) {
+    return $http.get(APP_CONTEXT + 'users/' + username);
+  }
+})
