@@ -14,12 +14,12 @@
     </button>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="friend in vm.friendList" type="item-text-wrap">
-        <a href="#/fight/anonymous" ng-if="$first">
+        <a ng-if="$first" ng-click="vm.fightAnonymous()">
           <!-- <img ng-src="{{friend.face}}"> -->
           anonymouse
         </a>
-        <a href="#/fight/friend" ng-if="!$first">
-          <img ng-src="{{friend.face}}">
+        <a ng-if="!$first" ng-click="vm.fightFriend(friend)">
+          <!-- <img ng-src="{{friend.face}}"> -->
           {{friend}}
         </a>
       </ion-item>

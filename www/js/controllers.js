@@ -23,7 +23,8 @@ app.controller('AppCtrl', function($scope, $cordovaPush, $cordovaDialogs, $cordo
       quality: 75,
       targetWidth: 300,
       targetHeight: 450,
-      saveToPhotoAlbum: true
+      saveToPhotoAlbum: true,
+      cameraDirection: navigator.camera.Direction.FRONT
     }).then(function(imageURI) {
       // $cordovaToast.showLongBottom(imageURI);
       // $scope.lastPhoto = imageURI;

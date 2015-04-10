@@ -19,10 +19,12 @@ app.factory(("ionPlatform"), function( $q ){
     }
 })
 
-.factory('ajax', function ($http, APP_CONTEXT) {
+.factory('ajax', function ($http, APP_CONTEXT, USER) {
   var service = {
     addUser: addUser,
-    getUserInfo: getUserInfo
+    getUserInfo: getUserInfo,
+    pkTarget: pkTarget,
+    pkRandom: pkRandom
   };
   return service;
   function addUser (data) {
@@ -30,5 +32,20 @@ app.factory(("ionPlatform"), function( $q ){
   }
   function getUserInfo (username) {
     return $http.get(APP_CONTEXT + 'users/' + username);
+  }
+  function pkTarget (targetName, image) {
+    var data = {
+      from: USER.username,
+      to: targetName,
+      image: image
+    };
+    return $http.post(APP_CONTEXT + 'pk/target', data);
+  }
+  function pkRandom (image) {
+    var data = {
+      username: USER.username,
+      image: image
+    };
+    return $http.post(APP_CONTEXT + 'pk/random', data);
   }
 })
