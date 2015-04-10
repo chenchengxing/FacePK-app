@@ -1,4 +1,4 @@
-angular.module('app').controller('HomeController', function ($scope, ajax, USER, $cordovaToast ,$state, BayMax) {
+angular.module('app').controller('HomeController', function ($scope, ajax, USER, $cordovaToast ,$state, BayMax, $cordovaCamera, $jrCrop) {
   var vm = this;
   vm.lastPhoto = USER.photo;
   vm.friendList = [];
@@ -73,5 +73,11 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
       name: name
     });
     
+  };
+  vm.goChallengers = function () {
+    $state.go('challengers');
+  };
+  vm.goRank = function () {
+    $state.go('rank');
   };
 });

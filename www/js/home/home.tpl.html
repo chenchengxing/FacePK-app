@@ -9,6 +9,12 @@
       <span ng-if="!lastPhoto">自拍一张</span>
       <span ng-if="lastPhoto">重拍一张</span>
     </button>
+    <button ng-click="vm.goChallengers()" class="btn-photo button button-block button-royal">
+      <span>去challengers</span>
+    </button>
+    <button ng-click="vm.goRank()" class="btn-photo button button-block button-royal">
+      <span>rank</span>
+    </button>
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="friend in vm.friendList" type="item-text-wrap">
         <a ng-if="$first" ng-click="vm.fightAnonymous()">

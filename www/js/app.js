@@ -58,6 +58,11 @@ var app = angular.module('app', ['ionic','ngCordova', 'jrCrop'])
     templateUrl: "js/challenger/challengers.tpl.html",
     controller: 'ChallengersController as vm'
   })
+    .state('rank', {
+    url: "/rank",
+    templateUrl: "js/rank/rank.tpl.html",
+    controller: 'RankController as vm'
+  })
 });
 
 app.config([ '$httpProvider', function($httpProvider) {

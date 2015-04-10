@@ -4,7 +4,7 @@ angular.module('app')
     vm.photo = USER.photo;
     ajax.pkTarget($stateParams.name).success(function (response) {
       if (response.code === 200) {
-
+        $cordovaDialogs.alert(response.msg);
       }
     });
 

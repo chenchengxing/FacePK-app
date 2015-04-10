@@ -26,7 +26,8 @@ app.factory(("ionPlatform"), function( $q ){
     pkTarget: pkTarget,
     pkRandom: pkRandom,
     getChallengerList: getChallengerList,
-    acceptPK: acceptPK
+    acceptPK: acceptPK,
+    getRankList: getRankList
   };
   return service;
   function addUser (data) {
@@ -59,6 +60,9 @@ app.factory(("ionPlatform"), function( $q ){
       username: challengerName,
       image: Util.base64Trim(USER.photo)
     });
+  }
+  function getRankList () {
+    return $http.get(APP_CONTEXT + 'rank/all');
   }
 })
 
