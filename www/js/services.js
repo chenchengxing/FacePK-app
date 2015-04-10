@@ -19,10 +19,14 @@ app.factory(("ionPlatform"), function( $q ){
     }
 })
 
-.factory('ajax', function ($http, APP_CONTEXT) {
+.factory('ajax', function ($http, APP_CONTEXT, USER, Util) {
   var service = {
     addUser: addUser,
-    getUserInfo: getUserInfo
+    getUserInfo: getUserInfo,
+    pkTarget: pkTarget,
+    pkRandom: pkRandom,
+    getChallengerList: getChallengerList,
+    acceptPK: acceptPK
   };
   return service;
   function addUser (data) {
@@ -30,5 +34,40 @@ app.factory(("ionPlatform"), function( $q ){
   }
   function getUserInfo (username) {
     return $http.get(APP_CONTEXT + 'users/' + username);
+  }
+  function pkTarget (targetName) {
+    var data = {
+      from: USER.username,
+      to: targetName,
+      image: Util.base64Trim(USER.photo)
+    };
+    return $http.post(APP_CONTEXT + 'pk/target', data);
+  }
+  function pkRandom () {
+    var data = {
+      username: USER.username,
+      image: Util.base64Trim(USER.photo)
+    };
+    return $http.post(APP_CONTEXT + 'pk/random', data);
+  }
+  function getChallengerList () {
+    return $http.get(APP_CONTEXT + 'pk/challengers/' + USER.username);
+  }
+  function acceptPK (challengerName) {
+    return $http.post(APP_CONTEXT + 'pk/accept', {
+      me: USER.username,
+      username: challengerName,
+      image: Util.base64Trim(USER.photo)
+    });
+  }
+})
+
+.factory('Util', function () {
+  var service = {
+    base64Trim: base64Trim
+  };
+  return service;
+  function base64Trim (input) {
+    return input.replace(/data:image\/png;base64,/, '');
   }
 })

@@ -1,5 +1,10 @@
 angular.module('app')
-  .controller('FightAnonymousController', function ($scope) {
+  .controller('FightAnonymousController', function ($scope, ajax, USER) {
     var vm = this;
-    vm.photo = '/img/alien.png';
+    vm.photo = USER.lastPhoto;
+    ajax.pkRandom().success(function (response) {
+      if (response.code === 200) {
+        
+      }
+    });
   });

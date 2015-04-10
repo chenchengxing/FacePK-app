@@ -1,0 +1,16 @@
+<ion-view view-title="Challengers">
+  <ion-content>
+    <div class="row region">
+      <div class="col">
+        <img ng-src="{{vm.photo}}" style="max-width: 100%">
+      </div>
+    </div>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="challenger in vm.challengerList" type="item-text-wrap">
+        <a ng-click="vm.fightChallenger(challenger)">
+          干{{challenger}}
+        </a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
