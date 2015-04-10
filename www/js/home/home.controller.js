@@ -13,6 +13,8 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER)
       vm.friendList = response.data.friends;
       vm.friendList.unshift({});
     }
+  }).error(function () {
+    console.log('err')
   })
 
 });
