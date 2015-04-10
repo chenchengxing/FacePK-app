@@ -1,6 +1,19 @@
+/* mainColor: rgb(254, 99, 151) #fe6397*/
+h1.main-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fe6397;
+}
+
+.scroll-content.ionic-scroll {
+  padding-top: 10px;
+}
+
 .region {
-  height: 43%;
-  border: 1px solid #ccc;
+  height: 45%;
+  /*overflow-y: auto;*/
+  /*border: 1px solid #ccc;*/
 }
 
 .region .col {
@@ -9,9 +22,14 @@
 
 
 .btn-photo.button.button-block {
-  height: 10%;
+  /*height: 10%;*/
+  color: #fff;
   margin-top: -2px;
   margin-bottom: -2px;
+
+  border-radius: 0;
+  border-color: #d95581;
+  background-color: #fe6397;
 }
 
 .row.avatars {
@@ -19,9 +37,16 @@
 }
 
 .row.avatars .col {
-  height: 60px;
+  /*height: 60px;*/
   box-sizing: border-box;
   /*background: #ccc;*/
+}
+
+.username {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
 }
 
 .avatar {
@@ -38,4 +63,10 @@
 }
 .slider-pager {
   bottom: 0;
+}
+
+.button.button-face {
+  border-color: #d95581;
+  background-color: #fe6397;
+  color: #fff;
 }

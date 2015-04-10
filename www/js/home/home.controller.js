@@ -8,11 +8,11 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
   //   friend.face = '/img/anonymous-128.png';
   //   vm.friendList.push(friend);
   // }
-  $cordovaToast.showShortCenter('username: ' + USER.username);
+  // $cordovaToast.showShortCenter('username: ' + USER.username);
   ajax.getUserInfo(USER.username).success(function (response) {
     $cordovaToast.showShortCenter('go get friends');
     if (response.code === 200) {
-      $cordovaToast.showShortCenter(response);
+      // $cordovaToast.showShortCenter(response);
       vm.friendList = response.data.friends;
       vm.friendList.unshift({});
     }

@@ -1,8 +1,5 @@
 <ion-view view-title="Home">
   <ion-content>
-    <ion-header-bar class="bar-stable">
-        <h1 class="title">{{vm.title}}</h1>
-    </ion-header-bar>
     <div class="row region">
       <div class="col">
         <img ng-src="{{vm.lastPhoto}}" style="max-width: 100%">
@@ -12,17 +9,120 @@
       <span ng-if="!lastPhoto">自拍一张</span>
       <span ng-if="lastPhoto">重拍一张</span>
     </button>
-    <ion-list>
+    <!-- <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="friend in vm.friendList" type="item-text-wrap">
-        <a ng-if="$first" ng-click="vm.fightAnonymous()">
-          <!-- <img ng-src="{{friend.face}}"> -->
-          anonymouse
-        </a>
+        <a ng-if="$first" ng-click="vm.fightAnonymous()">anonymouse</a>
         <a ng-if="!$first" ng-click="vm.fightFriend(friend)">
-          <!-- <img ng-src="{{friend.face}}"> -->
           {{friend}}
         </a>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
+    <ion-scroll zooming="true" direction="y">
+      <div class="region">
+        <div class="row avatars">
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+            <div class="username">anonymous</div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="https://avatars3.githubusercontent.com/u/11214?v=3&amp;s=460">
+            </div>
+            <div class="username">ann</div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+            <div class="username">paper</div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+            <div class="username">ccx</div>
+          </div>
+        </div>
+        <div class="row avatars">
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+        </div>
+        <div class="row avatars">
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+        </div>
+        <div class="row avatars">
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+          <div class="col">
+            <div class="avatar">
+                <img ng-src="img/anonymous-128.png" style="max-width: 100%">
+            </div>
+          </div>
+        </div>
+        <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+
+          </ion-slide>
+          <ion-slide>
+            <div class="box yellow"><h1>YELLOW</h1></div>
+          </ion-slide>
+          <ion-slide>
+            <div class="box pink"><h1>PINK</h1></div>
+          </ion-slide>
+        </ion-slide-box> -->
+      </div>
+    </ion-scroll>
   </ion-content>
 </ion-view>
