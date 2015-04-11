@@ -1,17 +1,56 @@
-.region {
-  height: 43%;
-  border: 1px solid #ccc;
+/* mainColor: rgb(254, 99, 151) #fe6397*/
+h1.main-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fe6397;
 }
 
-.region .col {
+.scroll-content.ionic-scroll {
+  padding-top: 10px;
+}
+
+.region {
+  height: 45%;
+  /*overflow-y: auto;*/
+  /*border: 1px solid #ccc;*/
+}
+
+.region .col-25 {
   overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.region .photo {
+  display: block;
+  width: 340px;
+  margin: 0 auto;
+}
+.region .photo img {
+  height: 280px;
+  width: 340px;
+}
+
+.region .photo-target {
+  margin: 0 auto;
+}
+
+.region .photo-target img {
+  height: auto;
+  height: auto;
 }
 
 
 .btn-photo.button.button-block {
-  height: 10%;
+  /*height: 10%;*/
+  color: #fff;
   margin-top: -2px;
   margin-bottom: -2px;
+
+  border-radius: 0;
+  border-color: #d95581;
+  background-color: #fe6397;
 }
 
 .row.avatars {
@@ -19,9 +58,16 @@
 }
 
 .row.avatars .col {
-  height: 60px;
+  /*height: 60px;*/
   box-sizing: border-box;
   /*background: #ccc;*/
+}
+
+.username {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
 }
 
 .avatar {
@@ -38,4 +84,39 @@
 }
 .slider-pager {
   bottom: 0;
+}
+
+.button.button-face {
+  border-color: #d95581;
+  background-color: #fe6397;
+  color: #fff;
+}
+
+.row.fighting {
+  padding: 15px;
+}
+.row.fighting h4 {
+  display: block;
+  width: 100%;
+
+  text-align: center;
+  color: #fe6397;
+  font-size: 24px;
+}
+.row.region.challenger {
+  position: relative;
+}
+.fixed-close {
+  position: absolute;
+  top: 0;
+  right: 12px;
+}
+
+.fixed-close a {
+  color: lightskyblue;
+}
+
+.fixed-close .button-icon .icon:before,
+.fixed-close .button-icon.icon:before {
+  font-size: 40px;
 }

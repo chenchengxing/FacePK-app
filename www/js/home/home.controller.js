@@ -7,6 +7,7 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
   //   friend.face = '/img/anonymous-128.png';
   //   vm.friendList.push(friend);
   // }
+  // $cordovaToast.showShortCenter('username: ' + USER.username);
   try {
     $cordovaToast.showShortCenter('username: ' + USER.username);
   } catch (e) {}
@@ -16,7 +17,7 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
     if (response.code === 200) {
       // $cordovaToast.showShortCenter(response);
       vm.friendList = response.data.friends;
-      vm.friendList.unshift({});
+      // vm.friendList.unshift({});
     }
   }).error(function () {
     console.log('err')
@@ -26,8 +27,8 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
     // $cordovaToast.showShortCenter('Getting camera');
     $cordovaCamera.getPicture({
       quality: 75,
-      targetWidth: 300,
-      targetHeight: 450,
+      targetWidth: 360,
+      targetHeight: 800,
       saveToPhotoAlbum: true,
       cameraDirection: navigator.camera.Direction.FRONT
     }).then(function(imageURI) {
@@ -51,8 +52,8 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
   vm.crop = function (imageURI) {
     $jrCrop.crop({
       url: imageURI,
-      width: 300,
-      height: 180
+      width: 340,
+      height: 280
     }).then(function(canvas) {
         // success!
         var image = canvas.toDataURL('image/jpeg', 1.0);
@@ -72,7 +73,7 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
     $state.go('fight.friend', {
       name: name
     });
-    
+
   };
   vm.goChallengers = function () {
     $state.go('challengers');

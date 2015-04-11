@@ -2,30 +2,65 @@
   <ion-content>
     <div class="row region">
       <div class="col">
-        <img ng-src="{{vm.lastPhoto}}" style="max-width: 100%">
+        <div class="photo">
+          <img ng-src="{{vm.lastPhoto}}" style="max-width: 100%">
+        </div>
       </div>
     </div>
-    <button ng-click="vm.getPhoto()" class="btn-photo button button-block button-royal">
-      <span ng-if="!lastPhoto">自拍一张</span>
-      <span ng-if="lastPhoto">重拍一张</span>
-    </button>
-    <button ng-click="vm.goChallengers()" class="btn-photo button button-block button-royal">
+    <div class="button-bar">
+      <a class="button" ng-click="vm.goChallengers()">challengers</a>
+      <a class="button button-face" ng-click="vm.getPhoto()">
+        <span ng-if="!vm.lastPhoto">自拍一张</span>
+        <span ng-if="vm.lastPhoto">拍一张</span>
+      </a>
+      <a class="button" ng-click="vm.goRank()">rank</a>
+    </div>
+    <!-- <button ng-click="vm.getPhoto()" class="btn-photo button button-block button-royal">
+
+    </button> -->
+    <!-- <button ng-click="vm.goChallengers()" class="btn-photo button button-block button-royal">
       <span>去challengers</span>
     </button>
     <button ng-click="vm.goRank()" class="btn-photo button button-block button-royal">
       <span>rank</span>
-    </button>
-    <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="friend in vm.friendList" type="item-text-wrap">
-        <a ng-if="$first" ng-click="vm.fightAnonymous()">
-          <!-- <img ng-src="{{friend.face}}"> -->
-          anonymous
-        </a>
-        <a ng-if="!$first" ng-click="vm.fightFriend(friend)">
-          <!-- <img ng-src="{{friend.face}}"> -->
-          {{friend}}
-        </a>
-      </ion-item>
-    </ion-list>
+    </button> -->
+    <ion-scroll zooming="true" direction="y">
+      <div class="region">
+        <div class="row avatars">
+          <div class="col-25" ng-click="vm.fightAnonymous()">
+          <!-- <div class="col-25"> -->
+            <div class="avatar">
+                <img ng-src="img/random-mini.png" style="max-width: 100%">
+            </div>
+            <div class="username">random</div>
+          </div>
+          <div class="col-25" ng-click="vm.fightFriend(friend)" ng-repeat="friend in vm.friendList">
+          <!-- <div class="col-25" ng-repeat="friend in vm.friendList"> -->
+            <div class="avatar">
+                <img ng-src="data:image/png;base64,{{friend.image}}">
+            </div>
+            <div class="username">{{friend.name}}</div>
+          </div>
+          <div class="col-25" ng-click="vm.addFrind()">
+            <div class="avatar">
+                <img ng-src="img/plus.png">
+            </div>
+          </div>
+        </div>
+        <div class="row avatars">
+        </div>
+        <!-- <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+
+          </ion-slide>
+          <ion-slide>
+            <div class="box yellow"><h1>YELLOW</h1></div>
+          </ion-slide>
+          <ion-slide>
+            <div class="box pink"><h1>PINK</h1></div>
+          </ion-slide>
+        </ion-slide-box> -->
+      </div>
+    </ion-scroll>
   </ion-content>
 </ion-view>
