@@ -1,8 +1,8 @@
 angular.module('app')
-  .controller('FightAnonymousController', function ($scope, ajax, USER, $cordovaDialogs, $rootScope, $state) {
+  .controller('FightAnonymousController', function ($scope, ajax, USER, $cordovaDialogs, $rootScope, $state, Util) {
     var vm = this;
     vm.photo = USER.photo;
-    vm.targetPhoto = '';
+    // vm.targetPhoto = '';
     vm.targetName = '';
     vm.pkResult = '';
     vm.cancelFight = function () {
@@ -29,18 +29,20 @@ angular.module('app')
       if (response.code === 200) {
         // $cordovaDialogs.alert(response.msg);
         if (response.data && response.data.image) {
-          vm.targetPhoto = 'data:image/png;base64,' + response.data.image;
+          vm.targetPhoto = Util.toBase64ImgSrc(response.data.image);
           vm.targetName = response.data.pk_from;
           vm.pkResult = response.data.result;
-          $cordovaDialogs.alert(response.data.result);
+          $cordovaDialogs.alert(response.msg);
+          // $cordovaDialogs.alert(response.data.result);
         }
       }
     });
     vm.addFriend = function () {
       if (vm.targetName) {
         ajax.addFriend(vm.targetName).success(function (response) {
-          $cordovaDialogs.alert('成功添加' + vm.targetName);
-          $state.go('home');
+          $cordovaDialogs.alert('成功添加' + vm.targetName + '为好友！').then(function () {
+            $state.go('home');
+          });
         });
       }
     };
@@ -55,10 +57,16 @@ angular.module('app')
       //   "pk_result" = draw|win|lose;
       // }
       if (notification.push_type === 'res') {
-        $cordovaDialogs.alert(notification.pk_result);
+        $cordovaDialogs.alert(Util.formatPKResult(notification.pk_result));
         vm.pkResult = notification.pk_result;
-        vm.targetName = response.data.pk_from;
-        vm.targetPhoto = 'data:image/png;base64,' + response.data.image;
+        vm.targetName = notification.pk_from;
+        // vm.targetPhoto = 'data:image/png;base64,' + response.data.image;
+        ajax.getPkImage(vm.targetName).success(function (response) {
+          if (response.code === 200 && response.data) {
+            vm.targetPhoto = Util.toBase64ImgSrc(response.data.image);
+            // vm.targetPhoto = response.data.image;
+          }
+        });
       }
     });
   });

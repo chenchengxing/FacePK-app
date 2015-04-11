@@ -1,14 +1,25 @@
 <ion-view view-title="Rank">
   <ion-header-bar class="bar-stable">
+     <div class="buttons">
+      <button class="button" ng-click="vm.goHome()">返回</button>
+    </div>
     <h1 class="title">排行榜</h1>
   </ion-header-bar>
   <ion-content>
-    <ion-list>
+    <!-- <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="item in vm.rankList" type="item-text-wrap">
         <a>
           {{item.name}}: {{item.score}}
         </a>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
+    <div class="list">
+      <a class="item item-avatar" href="#" ng-repeat="item in vm.rankList">
+        <img ng-if="item.image" ng-src="data:image/png;base64,{{item.image}}">
+        <img ng-if="!item.image" ng-src="img/default.png">
+        <h2>{{item.score}}</h2>
+        <p>{{item.name}}</p>
+      </a>
+    </div>
   </ion-content>
 </ion-view>

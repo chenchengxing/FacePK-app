@@ -1,5 +1,5 @@
 app
-  .controller('ChallengersController', function ($scope, $state, ajax, USER, $cordovaDialogs, $ionicSlideBoxDelegate, $timeout) {
+  .controller('ChallengersController', function ($scope, $state, ajax, USER, $cordovaDialogs, $ionicSlideBoxDelegate, $timeout, Util) {
     var delegateInstance = $ionicSlideBoxDelegate.$getByHandle('challengersHandle');
     var vm = this;
     vm.photo = USER.photo;
@@ -22,8 +22,9 @@ app
       var target = vm.challengerList[index];
       ajax.acceptPK(target.name).success(function (response) {
         if (response.code === 200) {
-          $cordovaDialogs.alert(response.data.result);
-          removeChallenger();
+          $cordovaDialogs.alert(Util.formatPKResult(response.data.result)).then(function () {
+            removeChallenger();
+          });
         }
       });
     };

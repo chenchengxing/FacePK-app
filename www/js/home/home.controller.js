@@ -8,9 +8,10 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
   //   vm.friendList.push(friend);
   // }
   // $cordovaToast.showShortCenter('username: ' + USER.username);
-  try {
-    $cordovaToast.showShortCenter('username: ' + USER.username);
-  } catch (e) {}
+  
+  // try {
+  //   $cordovaToast.showShortCenter('username: ' + USER.username);
+  // } catch (e) {}
 
   ajax.getUserInfo(USER.username).success(function (response) {
     // $cordovaToast.showShortCenter('go get friends');
@@ -23,11 +24,16 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
     console.log('err')
   });
 
+  ajax.getChallengerList().success(function (response) {
+    if (response.code === 200 && response.data.names) {
+      vm.challengerCount = response.data.names.length;
+    }
+  });
   vm.getPhoto = function() {
     // $cordovaToast.showShortCenter('Getting camera');
     $cordovaCamera.getPicture({
       quality: 75,
-      targetWidth: 360,
+      targetWidth: 320,
       targetHeight: 800,
       saveToPhotoAlbum: true,
       cameraDirection: navigator.camera.Direction.FRONT
@@ -52,11 +58,11 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
   vm.crop = function (imageURI) {
     $jrCrop.crop({
       url: imageURI,
-      width: 340,
-      height: 280
+      width: 200,
+      height: 200
     }).then(function(canvas) {
         // success!
-        var image = canvas.toDataURL('image/jpeg', 1.0);
+        var image = canvas.toDataURL('image/png', 1.0);
         vm.lastPhoto = image;
         USER.photo = image;
         // $cordovaToast.showLongBottom(image);

@@ -11,11 +11,13 @@
       <h4>{{vm.pkResult || '等待响应中...'}}</h4>
     </div>
     <div class="row region challenger">
-      <div class="fixed-close">
-        <a class="button button-icon icon ion-close-circled" ng-click="vm.cancelFight()"></a>
-      </div>
-      <div class="photo-target">
-        <img ng-src="{{vm.targetPhoto || 'img/random.png'}}" style="max-width: 100%">
+      <div class="col">
+        <div class="fixed-close">
+          <a class="button button-icon icon ion-close-circled" ng-click="vm.cancelFight()"></a>
+        </div>
+        <div class="photo-target">
+          <img ng-src="{{vm.targetPhoto || 'img/default-big.png'}}" style="max-width: 100%">
+        </div>
       </div>
     </div>
   </ion-content>

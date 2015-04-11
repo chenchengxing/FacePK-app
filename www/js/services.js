@@ -80,10 +80,26 @@ app.factory(("ionPlatform"), function( $q ){
 
 .factory('Util', function () {
   var service = {
-    base64Trim: base64Trim
+    base64Trim: base64Trim,
+    toBase64ImgSrc: toBase64ImgSrc,
+    formatPKResult: formatPKResult
   };
   return service;
   function base64Trim (input) {
     return input.replace(/data:image\/png;base64,/, '');
+  }
+  function toBase64ImgSrc (input) {
+    var temp = input.replace(/data:image\/png;base64,/, '');
+    return 'data:image/png;base64,' + input;
+  }
+  function formatPKResult (input) {
+    if (input === 'lose') {
+      return '胜败乃兵家常事';
+    } else if (input === 'win') {
+      return '恭喜获胜！颜值 +5';
+    } else if (input === 'wait') {
+      return '等待响应...';
+    }
+    return 'yo，颜值战平~';
   }
 })

@@ -8,12 +8,11 @@
       </div>
     </div>
     <div class="button-bar">
-      <a class="button" ng-click="vm.goChallengers()">challengers</a>
+      <a class="button" ng-click="vm.goChallengers()" ng-disabled="!vm.challengerCount">挑战者<span ng-if="vm.challengerCount">({{vm.challengerCount}})</span></a>
       <a class="button button-face" ng-click="vm.getPhoto()">
-        <span ng-if="!vm.lastPhoto">自拍一张</span>
-        <span ng-if="vm.lastPhoto">拍一张</span>
+        <span>换照片</span>
       </a>
-      <a class="button" ng-click="vm.goRank()">rank</a>
+      <a class="button" ng-click="vm.goRank()">排行榜</a>
     </div>
     <!-- <button ng-click="vm.getPhoto()" class="btn-photo button button-block button-royal">
 
@@ -32,13 +31,13 @@
             <div class="avatar">
                 <img ng-src="img/random-mini.png" style="max-width: 100%">
             </div>
-            <div class="username">random</div>
+            <div class="username">随机PK</div>
           </div>
           <div class="col-25" ng-click="vm.fightFriend(friend)" ng-repeat="friend in vm.friendList">
           <!-- <div class="col-25" ng-repeat="friend in vm.friendList"> -->
             <div class="avatar">
                 <img ng-if="friend.image" ng-src="data:image/png;base64,{{friend.image}}">
-                <img ng-if="!friend.image" ng-src="img/default">
+                <img ng-if="!friend.image" ng-src="img/default.png">
             </div>
             <div class="username">{{friend.name}}</div>
           </div>
