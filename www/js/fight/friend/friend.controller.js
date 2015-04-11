@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('FightFriendController', function ($scope, ajax, $stateParams, USER, $cordovaDialogs) {
+  .controller('FightFriendController', function ($scope, ajax, $stateParams, USER, $cordovaDialogs, Util) {
     var vm = this;
     vm.photo = USER.photo;
     vm.targetPhoto = ''
@@ -12,8 +12,15 @@ angular.module('app')
       //     },
       //     "msg": "Please wait for ann to accept pk~"
       // }
-      if (response.code === 200) {
-        $cordovaDialogs.alert(response.msg);
+      if (response.code === 200 && response.data) {
+        // $cordovaDialogs.alert(response.msg);
+        var data = response.data;
+        if (data.image) {
+          vm.targetPhoto = 'data:image/png;base64,' + response.data.image;
+          $cordovaDialogs.alert(data.result);
+        } else {
+          // do nothing
+        }
       }
     });
 
@@ -30,7 +37,12 @@ angular.module('app')
       //   "pk_from" = username;
       // }
       if (notification.push_type === 'res') {
-        $cordovaDialogs.alert(notification.pk_result);
+        ajax.getPkImage(notification.pk_from).success(function (response) {
+          if (response.code === 200 && response.data) {
+            vm.targetPhoto = 'data:image/png;base64,' + response.data.image;
+            $cordovaDialogs.alert(notification.pk_result);
+          }
+        });
       }
     });
   });
