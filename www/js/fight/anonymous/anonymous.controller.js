@@ -1,5 +1,5 @@
 angular.module('app')
-  .controller('FightAnonymousController', function ($scope, ajax, USER, $cordovaDialogs, $state) {
+  .controller('FightAnonymousController', function ($scope, ajax, USER, $cordovaDialogs, $rootScope, $state) {
     var vm = this;
     vm.photo = USER.photo;
     vm.targetPhoto = '';
@@ -34,7 +34,6 @@ angular.module('app')
         }
       }
     });
-
     vm.addFriend = function () {
       if (vm.targetName) {
         ajax.addFriend(vm.targetName).success(function (response) {
@@ -43,9 +42,7 @@ angular.module('app')
         });
       }
     };
-
-
-    $scope.$on('pushNotificationReceived', function(event, notification) {
+    $rootScope.$on('pushNotificationReceived', function(event, notification) {
       // 发起pk等待一段时间后匹配成功，收到推送消息格式：
       // {
       //   aps = {
