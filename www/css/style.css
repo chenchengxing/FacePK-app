@@ -16,8 +16,29 @@ h1.main-title {
   /*border: 1px solid #ccc;*/
 }
 
-.region .col {
+.region .col-25 {
   overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.region .photo {
+  display: block;
+  width: 340px;
+  margin: 0 auto;
+}
+.region .photo img {
+  height: 280px;
+  width: 340px;
+}
+
+.region .photo-target {
+  margin: 0 auto;
+}
+
+.region .photo-target img {
+  height: auto;
+  height: auto;
 }
 
 
@@ -69,4 +90,33 @@ h1.main-title {
   border-color: #d95581;
   background-color: #fe6397;
   color: #fff;
+}
+
+.row.fighting {
+  padding: 15px;
+}
+.row.fighting h4 {
+  display: block;
+  width: 100%;
+
+  text-align: center;
+  color: #fe6397;
+  font-size: 24px;
+}
+.row.region.challenger {
+  position: relative;
+}
+.fixed-close {
+  position: absolute;
+  top: 0;
+  right: 12px;
+}
+
+.fixed-close a {
+  color: lightskyblue;
+}
+
+.fixed-close .button-icon .icon:before,
+.fixed-close .button-icon.icon:before {
+  font-size: 40px;
 }

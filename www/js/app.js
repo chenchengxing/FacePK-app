@@ -45,13 +45,23 @@ var app = angular.module('app', ['ionic','ngCordova', 'jrCrop'])
     }
   })
     .state('fight.friend', {
-    url: "/friend",
+    url: "/friend/:name",
     views: {
       friend: {
         templateUrl: "js/fight/friend/friend.tpl.html",
         controller: 'FightFriendController as vm'
       }
     }
+  })
+    .state('challengers', {
+    url: "/challengers",
+    templateUrl: "js/challenger/challengers.tpl.html",
+    controller: 'ChallengersController as vm'
+  })
+    .state('rank', {
+    url: "/rank",
+    templateUrl: "js/rank/rank.tpl.html",
+    controller: 'RankController as vm'
   })
 });
 

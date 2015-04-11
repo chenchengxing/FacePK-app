@@ -92,21 +92,22 @@ app.controller('AppCtrl', function($scope, $cordovaPush, $cordovaDialogs, $cordo
 
   // Notification Received
   // $scope.$on('$cordovaPush:notificationReceived', function (event, notification) {
-  $scope.$on('pushNotificationReceived', function(event, notification) {
-    console.log(JSON.stringify([notification]));
-    // $scope.notifications.unshift(notification.alert);
-    if (ionic.Platform.isAndroid()) {
-      handleAndroid(notification);
-    } else if (ionic.Platform.isIOS()) {
-      $scope.noti = JSON.stringify([notification]);
-      $scope.notifications.unshift(notification.alert);
-      handleIOS(notification);
-      // $scope.$apply(function () {
-      // $scope.notifications.unshift(JSON.stringify(notification.alert));
-      // $scope.notifications.unshift(notification.alert);
-      // })
-    }
-  });
+  
+  // $scope.$on('pushNotificationReceived', function(event, notification) {
+  //   console.log(JSON.stringify([notification]));
+  //   // $scope.notifications.unshift(notification.alert);
+  //   if (ionic.Platform.isAndroid()) {
+  //     handleAndroid(notification);
+  //   } else if (ionic.Platform.isIOS()) {
+  //     $scope.noti = JSON.stringify([notification]);
+  //     $scope.notifications.unshift(notification.alert);
+  //     handleIOS(notification);
+  //     // $scope.$apply(function () {
+  //     // $scope.notifications.unshift(JSON.stringify(notification.alert));
+  //     // $scope.notifications.unshift(notification.alert);
+  //     // })
+  //   }
+  // });
 
   // Android Notification Received Handler
   function handleAndroid(notification) {
