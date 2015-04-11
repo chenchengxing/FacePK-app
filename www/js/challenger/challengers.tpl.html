@@ -2,15 +2,35 @@
   <ion-content>
     <div class="row region">
       <div class="col">
-        <img ng-src="{{vm.photo}}" style="max-width: 100%">
+        <div class="photo">
+          <img ng-src="{{vm.photo}}" style="max-width: 100%">
+        </div>
       </div>
     </div>
-    <ion-list>
+    <div class="button-bar">
+      <a class="button" ng-click="vm.goHome()">返回</a>
+      <a class="button button-face" ng-click="vm.fightChallenger()">接受挑战</a>
+      <a class="button" ng-click="vm.reject()">决绝</a>
+    </div>
+    <div class="row region">
+      <div class="col">
+        <ion-slide-box on-slide-changed="vm.slideHasChanged($index)" delegate-handle="challengersHandle" ng-if="!vm.isSwitching">
+          <ion-slide ng-repeat="challenger in vm.challengerList">
+            <div class="box">
+              <div class="photo-target">
+                <img ng-src="{{challenger.photo}}" style="max-width: 100%">
+              </div>
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+    </div>
+    <!-- <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="challenger in vm.challengerList" type="item-text-wrap">
         <a ng-click="vm.fightChallenger(challenger)">
           干{{challenger}}
         </a>
       </ion-item>
-    </ion-list>
+    </ion-list> -->
   </ion-content>
 </ion-view>

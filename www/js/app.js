@@ -34,6 +34,7 @@ var app = angular.module('app', ['ionic','ngCordova', 'jrCrop'])
     url: "/fight",
     abstract: true,
     templateUrl: "js/fight/fight.tpl.html"
+    // controller: 'FightController as vm'
   })
     .state('fight.anonymous', {
     url: "/anonymous",

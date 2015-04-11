@@ -69,9 +69,9 @@ angular.module('app').controller('HomeController', function ($scope, ajax, USER,
     $state.go('fight.anonymous');
   };
 
-  vm.fightFriend = function (name) {
+  vm.fightFriend = function (friend) {
     $state.go('fight.friend', {
-      name: name
+      name: friend.name
     });
 
   };
