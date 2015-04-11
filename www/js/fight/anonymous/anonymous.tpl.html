@@ -8,13 +8,13 @@
       </div>
     </div>
     <div class="row fighting">
-      <h4>等待响应中...</h4>
+      <h4>{{vm.pkResult || '等待响应中...'}}</h4>
     </div>
     <div class="row region challenger">
       <div class="fixed-close">
         <a class="button button-icon icon ion-close-circled" ng-click="vm.cancelFight()"></a>
       </div>
-      <div class="fixed-add">
+      <div class="fixed-add" ng-if="vm.targetName">
         <a class="button button-icon icon ion-plus-circled" ng-click="vm.addFriend()"></a>
       </div>
       <div class="photo-target">
