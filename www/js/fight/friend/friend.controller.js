@@ -3,6 +3,7 @@ angular.module('app')
     var vm = this;
     vm.photo = USER.photo;
     vm.targetPhoto = ''
+    vm.pkResult = '';
     ajax.pkTarget($stateParams.name).success(function (response) {
       // 返回：
       // {
@@ -15,12 +16,7 @@ angular.module('app')
       if (response.code === 200 && response.data) {
         // $cordovaDialogs.alert(response.msg);
         var data = response.data;
-        if (data.image) {
-          vm.targetPhoto = 'data:image/png;base64,' + response.data.image;
-          $cordovaDialogs.alert(data.result);
-        } else {
-          // do nothing
-        }
+          $cordovaDialogs.alert(data.status);
       }
     });
 
@@ -39,6 +35,8 @@ angular.module('app')
       if (notification.push_type === 'res') {
         ajax.getPkImage(notification.pk_from).success(function (response) {
           if (response.code === 200 && response.data) {
+            vm.pkResult = response.data.pk_result;
+            vm.targetName = response.data.pk_from;
             vm.targetPhoto = 'data:image/png;base64,' + response.data.image;
             $cordovaDialogs.alert(notification.pk_result);
           }

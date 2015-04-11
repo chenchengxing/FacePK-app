@@ -4,6 +4,7 @@ angular.module('app')
     vm.photo = USER.photo;
     vm.targetPhoto = '';
     vm.targetName = '';
+    vm.pkResult = '';
     vm.cancelFight = function () {
       $state.go('home');
     }
@@ -30,6 +31,7 @@ angular.module('app')
         if (response.data && response.data.image) {
           vm.targetPhoto = 'data:image/png;base64,' + response.data.image;
           vm.targetName = response.data.pk_from;
+          vm.pkResult = response.data.result;
           $cordovaDialogs.alert(response.data.result);
         }
       }
@@ -54,8 +56,9 @@ angular.module('app')
       // }
       if (notification.push_type === 'res') {
         $cordovaDialogs.alert(notification.pk_result);
+        vm.pkResult = notification.pk_result;
+        vm.targetName = response.data.pk_from;
         vm.targetPhoto = 'data:image/png;base64,' + response.data.image;
-        $cordovaDialogs.alert(notification.pk_result);
       }
     });
   });

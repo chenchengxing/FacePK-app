@@ -18,7 +18,7 @@ app
       $state.go('home');
     };
     vm.fightChallenger = function () {
-      var index = vm.targetIndex;
+      var index = delegateInstance.currentIndex();
       var target = vm.challengerList[index];
       ajax.acceptPK(target.name).success(function (response) {
         if (response.code === 200) {

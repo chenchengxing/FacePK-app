@@ -37,7 +37,8 @@
           <div class="col-25" ng-click="vm.fightFriend(friend)" ng-repeat="friend in vm.friendList">
           <!-- <div class="col-25" ng-repeat="friend in vm.friendList"> -->
             <div class="avatar">
-                <img ng-src="data:image/png;base64,{{friend.image}}">
+                <img ng-if="friend.image" ng-src="data:image/png;base64,{{friend.image}}">
+                <img ng-if="!friend.image" ng-src="img/default">
             </div>
             <div class="username">{{friend.name}}</div>
           </div>
